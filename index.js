@@ -9,6 +9,10 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use(compression());
+const authRoute = require('./routes/auth');
+const indexRoute = require('./routes/index');
+app.use('/api/auth', authRoute);
+app.use('/api/index', indexRoute);
 
 mongoose.connect(process.env.MONGO_URI, {
   UseNewUrlParser: true,
